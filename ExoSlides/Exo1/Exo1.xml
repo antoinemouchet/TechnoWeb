@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE ThirdYear SYSTEM "Exo1.dtd">
+<ThirdYear>
+    <course>
+        <code> INFOB317 </code>
+        <name> Techniques d'intelligence artificielle </name>
+        <credits> 5 </credits>
+        <teacher> Jean-Marie Jacquet </teacher>
+        <quadri> 2 </quadri>
+    </course>
+    <course>
+        <code> INFOB319 </code>
+        <name> Interaction Homme/Machine </name>
+        <credits> 5 </credits>
+        <teacher> Bruno Dumas </teacher>
+        <quadri> 1 </quadri>
+    </course>
+    <course>
+        <code> INFOB301 </code>
+        <name> Sécurité informatique </name>
+        <credits> 5 </credits>
+        <teacher> Jean-Noël Colin </teacher>
+        <quadri> 2 </quadri>
+    </course>
+    <course>
+        <code> INFOB302 </code>
+        <name> Séminaire d'introduction à la démarche scientifique </name>
+        <credits> 5 </credits>
+        <teacher> / </teacher>
+        <quadri> 2 </quadri>
+    </course>
+    <course>
+        <code> INFOB313 </code>
+        <name> Analyse et modélisation des S.I </name>
+        <credits> 5 </credits>
+        <teacher> Amrani Moussa </teacher>
+        <quadri> 1 </quadri>
+    </course>
+    <course>
+        <code> INFOB314 </code>
+        <name> Théorie des langages: syntaxe et sémantique </name>
+        <credits> 5 </credits>
+        <teacher> Pierre Schobbens </teacher>
+        <quadri> 2 </quadri>
+    </course>
+    <course>
+        <code> INFOB315 </code>
+        <name> Télécommunications et réseaux </name>
+        <credits> 5 </credits>
+        <teacher> Laurent Schumacher </teacher>
+        <quadri> 1 </quadri>
+    </course>
+    <course>
+        <code> INFOB320 </code>
+        <name> Technologies Web </name>
+        <credits> 5 </credits>
+        <teacher> Elio Tuci </teacher>
+        <quadri> 1 </quadri>
+    </course>
+    <course>
+        <code> INFOB316 </code>
+        <name> Programmation fonctionnelle et logique </name>
+        <credits> 5 </credits>
+        <teacher> Wim Vanhoof </teacher>
+        <quadri> 1 </quadri>
+    </course>
+    <course>
+        <code> INFOB318 </code>
+        <name> Projet individuel </name>
+        <credits> 9 </credits>
+        <teacher> Vincent Englebert </teacher>
+        <quadri> 3 </quadri>
+    </course>
+    <course>
+        <code> INFOB331 </code>
+        <name> Théorie des organisations </name>
+        <credits> 3 </credits>
+        <teacher> Claire Maris </teacher>
+        <quadri> 2 </quadri>
+    </course>
+    <course>
+        <code> IELVB312 </code>
+        <name> Anglais 3 </name>
+        <credits> 3 </credits>
+        <teacher> Natassia Schutz </teacher>
+        <quadri> 3 </quadri>
+    </course>
+</ThirdYear>

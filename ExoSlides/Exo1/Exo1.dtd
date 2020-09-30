@@ -1,0 +1,7 @@
+<!ELEMENT ThirdYear (course+)>
+<!ELEMENT course (code, name, credits, teacher, quadri)>
+<!ELEMENT code (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT credits (#PCDATA)>
+<!ELEMENT teacher (#PCDATA)>
+<!ELEMENT quadri (#PCDATA)>
