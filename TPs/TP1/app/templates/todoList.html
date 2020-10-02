@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo List</title>
+    <meta name="author" content="Antoine M.">
+    <meta name="description" content="ToDo List">
+</head>
+<body>
+    <h1>Tasks</h1>
+    {% if length == 0 %}
+        <p>Nothing to do! Good job.</p>
+    {% else %}
+        <h4>Number of tasks: {{length}}</h4>
+        {% for n in tasks %}
+        <p>- {{n}} <a href="/remove/{{loop.index}}">[X]</a></p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/" method="POST">
+        <input type="text" id="task" name="task" placeholder="Enter New task">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
