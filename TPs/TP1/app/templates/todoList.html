@@ -4,6 +4,7 @@
     <title>ToDo List</title>
     <meta name="author" content="Antoine M.">
     <meta name="description" content="ToDo List">
+    <link rel="stylesheet" type="text/css" href="../static/css/todoList.css">
 </head>
 <body>
     <h1>Tasks</h1>
@@ -12,7 +13,7 @@
     {% else %}
         <h4>Number of tasks: {{length}}</h4>
         {% for n in tasks %}
-        <p>- {{n}} <a href="/remove/{{loop.index}}">[X]</a></p>
+        <p class="task">- {{n}} <a href="/remove/{{loop.index}}">[<span style="color: red">x</span>]</a></p>
         {% endfor %}
     {% endif %}
 
