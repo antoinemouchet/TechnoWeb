@@ -3,7 +3,7 @@
 ## **Requirements**
 * python 3.7
 * pip
-* miniconda (*ou anaconda*)
+* miniconda (*or anaconda*)
 
 ## **Setup**
 1. Clone the repository
