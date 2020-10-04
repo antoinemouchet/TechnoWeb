@@ -17,18 +17,18 @@ conda env create -f environment.yml
 pip install -r requirements.txt
 ```
 
-!!!faq Note
-    Those commands set up an isolated environment and download the required packages for the application so that it does not mess up with other existing versions of python and packages.
+### Note
+Those commands set up an isolated environment and download the required packages for the application so that it does not mess up with other existing versions of python and packages.
 
 ## **Launch**
 If you have done everything right, you should be all setup to launch the app.
 
 Just a few more commands in the shell In the same directory as the toDo.py file.
 
-!!!warning
-    This may vary depending on your OS.
+### Warning
+This may vary depending on your OS.
 
-### _Windows_
+### Windows
 #### **Powershell**
 ```ps
 $env:FLASK_APP=./toDo.py 
@@ -40,7 +40,7 @@ set FLASK_APP=toDo.py
 flask run
 ```
 
-### _UNIX_
+### UNIX
 ```bash
 export FLASK_APP=toDo.py
 flask run
