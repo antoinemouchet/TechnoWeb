@@ -1,7 +1,12 @@
 body {
-    background-color: blanchedalmond;
+    background-color: paleturquoise;
 }
 
 .task {
-    color: brown;
+    color:black;
+}
+
+.centerwrap{
+    max-width: 500px;
+    margin: auto;
 }
