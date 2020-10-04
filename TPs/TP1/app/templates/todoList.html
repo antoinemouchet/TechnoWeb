@@ -4,17 +4,16 @@
     <title>ToDo List</title>
     <meta name="author" content="Antoine M.">
     <meta name="description" content="ToDo List">
-    <link rel="stylesheet" type="text/css" href="../static/css/todoList.css">
+    <link rel="stylesheet" href="../static/css/todoList.css">
 </head>
 <body>
-    <div id="centerwrap">
     <h1>Tasks</h1>
     {% if length == 0 %}
-        <p>Nothing to do! Good job.</p>
+        <h4>Nothing to do! Good job.</h4>
     {% else %}
         <h4>Number of tasks: {{length}}</h4>
         {% for n in tasks %}
-        <p class="task">- {{n}} <a href="/remove/{{loop.index}}">[<span style="color: red">x</span>]</a></p>
+        <p class="task">- {{n}} <a href="/remove/{{loop.index}}">[<span style="color: darkred">x</span>]</a></p>
         {% endfor %}
     {% endif %}
 
@@ -22,7 +21,6 @@
         <input type="text" id="task" name="task" placeholder="Enter New task">
         <button type="submit">Submit</button>
     </form>
-    </div>
 
 </body>
 </html>

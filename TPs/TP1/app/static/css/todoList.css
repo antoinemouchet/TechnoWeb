@@ -1,12 +1,24 @@
 body {
-    background-color: paleturquoise;
+    background-color: rgb(203, 243, 243);
+    max-width: 500px;
+    margin: auto;
 }
 
 .task {
     color:black;
+    text-indent: 25%;
 }
 
-.centerwrap{
-    max-width: 500px;
-    margin: auto;
+h1 {
+    text-align: center;
+    font-size: 200%;
+}
+
+h4 {
+    font-size: 150%;
+    text-align: center;
+}
+
+form {
+    text-align: center;
 }
