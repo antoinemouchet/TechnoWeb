@@ -1,9 +1,9 @@
 # TP01 - Flask, Application ToDo
 
 ## **Requirements**
-* python 3.7
+* python 3.7 ([get it here](https://www.python.org/downloads/))
 * pip
-* miniconda (*or anaconda*)
+* miniconda (*or anaconda*) ([download available here](https://docs.conda.io/en/latest/miniconda.html))
 
 ## **Setup**
 1. Clone the repository
