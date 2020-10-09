@@ -1,0 +1,12 @@
+<!--File for macros-->
+
+{% macro displayTask(name, index, state='false') -%}
+    - {{name}} <a href="/remove/{{index}}">[<span style="color: darkred">x</span>]</a>
+{%- endmacro %}
+
+{% macro form(name, type='text',  text="Enter text") -%}
+    <form action="/" method="POST">
+        <input type="{{ type }}" name="{{ name }}" placeholder="{{text}}">
+        <button type="submit">Submit</button>
+    </form>
+{%- endmacro %}
