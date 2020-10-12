@@ -1,12 +1,12 @@
 <!--File for macros-->
 
-{% macro displayTask(name, index, state='false') -%}
-    - {{name}} <a href="/remove/{{index}}">[<span style="color: darkred">x</span>]</a>
+{% macro displayTask(task, index, state='false') -%}
+    - {{task[0]}} <a href="/remove/{{index}}" class="fas fa-trash"></a> <a class="fas fa-pen" href="/modify/{{index}}"></a> <a class="far fa-check-square" href="/changeState/{{index}}"></a>
 {%- endmacro %}
 
-{% macro form(name, type='text',  text="Enter text") -%}
-    <form action="/" method="POST">
-        <input type="{{ type }}" name="{{ name }}" placeholder="{{text}}">
+{% macro form(name, type='text',  text="Enter text", action="") -%}
+    <form action="/{{ action }}" method="POST">
+        <input type="{{ type }}" name="{{ name }}" placeholder="{{text}}" required>
         <button type="submit">Submit</button>
     </form>
 {%- endmacro %}

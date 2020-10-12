@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, redirect
+from flask import render_template, redirect, flash
 from flask import url_for, request
 
 
@@ -8,8 +8,14 @@ from flask import url_for, request
 taskList = []
 
 @app.route("/", methods=['GET'])
-def todoList():     
-    return render_template("todoList.html", length=len(taskList), tasks=taskList)
+def todoList():
+
+    unFinished = 0
+    for task in taskList:
+        if not task[2]:
+            unFinished += 1
+
+    return render_template("todoList.html", length = len(taskList), tasks = taskList, notDone = unFinished)
 
 
 # Add a task
@@ -21,9 +27,9 @@ def newTask():
         if newTask:
             # A task state is set to False as a basis.
             taskList.append([newTask, len(taskList), False])
-            
-        else:
-            return redirect("/")
+        
+
+        return redirect("/")
 
     return render_template("newTask.html")
 
@@ -63,11 +69,7 @@ def modify(taskID):
         if newName:
             taskList[taskID - 1][0] = newName
             return redirect("/")
-        
-        #Invalide name
-        return "Go back and insert a valid name"
     
     # New template for changing name of a task
-    #return render_template("modify.html")
-    return redirect("/")
+    return render_template("modify.html", name=taskList[taskID - 1][0], taskID=taskID)
 
