@@ -48,13 +48,24 @@ flask run
 
 
 ## **How to use ?**
+### _See your tasks_
+* Click on "Home" in the navigation bar.
+
 ### _Add a task_
+* Click on "New task" in the navigation bar
 * Enter the task in the "*Enter New Task*" text box
 * Press Submit
 
 ### _Remove a task_
-* Press the x next to the task you wish to remove.
+* Press the bin next to the task you wish to remove.
 
+### _Edit a task_
+* Press the pen next to the task you wish to edit
+* Enter the new name of the task in the text box.
+* Press Submit
+
+### _Mark a task as done or not done_
+* Press the check box icon next to the corresponding task.
 
 ## **Note**
-When you close the app, tasks are saved inside the *todolist.txt* file located in the static folder. When you open the app, tasks written in this file are loaded and displayed along with the new ones.
+If a task is done, its name is crossed.
