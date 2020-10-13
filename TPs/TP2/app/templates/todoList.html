@@ -8,13 +8,17 @@
 {% endblock %}
 
 {% block body %}
-   <h1>Tasks</h1>
     {% if length == 0 %}
-        <h4>Nothing to do! Good job.</h4>
+        <h3>Nothing to do! Good job.</h3>
     {% else %}
-        <h4>Total: {{length}} Unfinished: {{notDone}}</h4>
+        <h3>Total: {{length}} Unfinished: {{notDone}}</h3>
+
+        <!-- Table with tasks -->
+        <div class="container-md">
         {% for n in tasks %}
-        <p class="task">{{ utils.displayTask(n, loop.index)}}</p>
+            {{ utils.displayTask(n, loop.index)}}
         {% endfor %}
+        </div>
+
     {% endif %}
 {% endblock %}

@@ -55,7 +55,7 @@ def remove(taskID):
 def changeState(taskID):
     if request.method == 'GET':
         taskList[taskID - 1][2] = not taskList[taskID - 1][2]
-    
+        #print(taskList[taskID - 1][2])
     return redirect("/")
 
 

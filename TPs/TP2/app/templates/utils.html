@@ -1,7 +1,21 @@
 <!--File for macros-->
 
 {% macro displayTask(task, index, state='false') -%}
-    - {{task[0]}} <a href="/remove/{{index}}" class="fas fa-trash"></a> <a class="fas fa-pen" href="/modify/{{index}}"></a> <a class="far fa-check-square" href="/changeState/{{index}}"></a>
+    <div class="row">
+        <!-- task not done -->
+        {% if not task[2] %}
+        <div class="col-sm">{{task[0]}}</div>
+        <div class="col-sm"><a class="far fa-check-square" href="/changeState/{{index}}" style="color: lime"></a></div>
+
+        <!-- task done -->
+        {% else %}
+        <div class="col-sm"><del>{{task[0]}}</del></div>
+        <div class="col-sm"><a class="far fa-check-square" href="/changeState/{{index}}" style="color: red"></a></div>
+        {% endif %}
+
+        <!-- delete or edit task -->
+        <div class="col-sm"><a href="/remove/{{index}}" class="fas fa-trash"></a> <a class="fas fa-pen" href="/modify/{{index}}"></a></div>
+    </div>
 {%- endmacro %}
 
 {% macro form(name, type='text',  text="Enter text", action="") -%}
