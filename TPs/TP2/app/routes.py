@@ -40,6 +40,11 @@ def newTask():
 def remove(taskID):
 
     if request.method == 'GET':
+
+        # Make sure requested ID is in range if not the case, then redirect
+        if taskID > len(taskList) or taskID < 1:
+            return redirect("/")
+
         taskList.pop(taskID - 1)
 
         # Change identifier of each variable to match its position in the list
@@ -53,7 +58,13 @@ def remove(taskID):
 # Change state value of a task
 @app.route("/changeState/<int:taskID>", methods=['GET'])
 def changeState(taskID):
+    
     if request.method == 'GET':
+
+        # Make sure requested ID is in range if not the case, then redirect
+        if taskID > len(taskList) or taskID < 1:
+            return redirect("/")
+
         taskList[taskID - 1][2] = not taskList[taskID - 1][2]
         #print(taskList[taskID - 1][2])
     return redirect("/")
@@ -61,6 +72,10 @@ def changeState(taskID):
 
 @app.route("/modify/<int:taskID>", methods=['POST', 'GET'])
 def modify(taskID):
+    
+    # Make sure requested ID is in range if not the case, then redirect
+    if taskID > len(taskList) or taskID < 1:
+        return redirect("/")
 
     if request.method == 'POST':
         newName = request.form['newName']
