@@ -2,6 +2,19 @@ from app import app
 from flask import render_template, redirect, flash
 from flask import url_for, request
 
+# Dictionnaire avec toutes les données
+users = {}
+
+# example d'user
+users["admin"] = {"name": "admin",
+                  "dob" = "10-10-2010",
+                  "password": "secret",
+                  "group": "admin",
+                  "tasks":{
+                    0: {"name": "Dodo", "description": "dormir", "deadline": "16-10-2020", "status": False},
+                    1: {"name": "TP techno web", "description": "Finir le tp", "deadline": "23-10-2020", "status": False}
+                  }
+}
 
 # A task as the following format
 # [name, id, state]
