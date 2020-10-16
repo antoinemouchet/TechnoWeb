@@ -1,0 +1,13 @@
+{% import 'utils.html' as utils %}
+{% extends "base.html" %}
+
+{% block head %}
+    <title>New Task</title>
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <h1> Add a task </h1>
+    {{ utils.form("task", text="Enter New Task", action="newTask")}}
+{% endblock %}
+

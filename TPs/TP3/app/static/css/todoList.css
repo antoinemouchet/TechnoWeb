@@ -1,0 +1,59 @@
+body {
+    background-color: whitesmoke;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 200%;
+}
+
+h3 {
+    font-size: 150%;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.navbar-link {
+    color: white;
+    margin-left: 15px;
+}
+
+.navbar-link:hover{
+    color: white;
+}
+
+.fa-trash {
+    color: black;
+}
+
+.fa-pen {
+    color: black;
+}
+
+
+.fa-trash:hover{
+    color: darkblue;
+    text-decoration:  none;
+}
+
+.fa-pen:hover{
+    color: darkblue;
+    text-decoration:  none;
+}
+
+.fa-check-square:hover{
+    color: darkblue;
+    text-decoration:  none;
+}
+
+.container {
+    justify-content: center;
+}
+
+.col-sm {
+    font-size: 125%;
+}
