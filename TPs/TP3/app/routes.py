@@ -7,12 +7,12 @@ users = {}
 
 # example d'user
 users["admin"] = {"name": "admin",
-                  "dob" = "10-10-2010",
+                  "dob" : "10-10-2010",
                   "password": "secret",
                   "group": "admin",
                   "tasks":{
-                    0: {"name": "Dodo", "description": "dormir", "deadline": "16-10-2020", "status": False},
-                    1: {"name": "TP techno web", "description": "Finir le tp", "deadline": "23-10-2020", "status": False}
+                    '0': {"name": "Dodo", "description": "dormir", "deadline": "16-10-2020", "status": False},
+                    '1': {"name": "TP techno web", "description": "Finir le tp", "deadline": "23-10-2020", "status": False}
                   }
 }
 
