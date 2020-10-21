@@ -15,8 +15,16 @@
 
         <!-- Table with tasks -->
         <div class="container-md">
+            <div class="row">
+                <div class="col-sm"><b>Name</b></div>
+                <div class="col-sm"><b>Status</b></div>
+                <div class="col-sm"><b>Description</b></div>
+                <div class="col-sm"><b>Deadline</b></div>
+                <div class="col-sm"><b>Modification</b></div>
+            </div>
         {% for n in tasks %}
             {{ utils.displayTask(n, loop.index)}}
+            <hr>
         {% endfor %}
         </div>
 

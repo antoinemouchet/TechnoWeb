@@ -8,6 +8,7 @@
 
 {% block body %}
     <h1> Add a task </h1>
-    {{ utils.form("task", text="Enter New Task", action="newTask")}}
+    {{ utils.taskForm("newTask", form) }}
+
 {% endblock %}
 

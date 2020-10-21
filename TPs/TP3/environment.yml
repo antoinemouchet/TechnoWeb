@@ -3,4 +3,5 @@ channels:
   - defaults
 dependencies:
   - python=3.7
-prefix: /home/users/100/amouchet/.conda/envs/TP3
+prefix: D:\Programmes\miniconda\envs\TP3
+

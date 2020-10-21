@@ -48,12 +48,23 @@ flask run
 
 
 ## **How to use ?**
+
+### _Create a new account_
+* Press Register and fill in the boxes
+* Press Submit
+  
+### _Log In_
+* Enter your username and password
+* Press Submit
+
 ### _See your tasks_
 * Click on "Home" in the navigation bar.
 
 ### _Add a task_
 * Click on "New task" in the navigation bar
 * Enter the task in the "*Enter New Task*" text box
+* Add a deadline (YYYY-MM-DD)
+* The description is optionnal
 * Press Submit
 
 ### _Remove a task_
@@ -66,6 +77,21 @@ flask run
 
 ### _Mark a task as done or not done_
 * Press the check box icon next to the corresponding task.
+
+
+## **Admin Guide**
+If you are an admin, you have access to the control pannel.
+
+### _Control Pannel_
+The available options here are:
+* Block/unblock an user
+* Promote/demote an user
+
+#### _Block - Unblock_
+* Click on the corresponding lock icon next to the username of the person to block/unblock.
+
+#### _Promote - Demote_
+* Click on the colored arrow next to the actual grade of the username of the person to promote/demote
 
 ## **Note**
 If a task is done, its name is crossed.

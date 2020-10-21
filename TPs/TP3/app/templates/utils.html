@@ -13,6 +13,9 @@
         <div class="col-sm"><a class="far fa-check-square" href="/changeState/{{index}}" style="color: red"></a></div>
         {% endif %}
 
+        <!-- Description and deadline -->
+        <div class="col-sm">{{task[1]}} </div>
+        <div class="col-sm">{{task[3]}}</div>
         <!-- delete or edit task -->
         <div class="col-sm"><a href="/remove/{{index}}" class="fas fa-trash"></a> <a class="fas fa-pen" href="/modify/{{index}}"></a></div>
     </div>
@@ -23,4 +26,55 @@
         <input type="{{ type }}" name="{{ name }}" placeholder="{{text}}" required>
         <button type="submit">Submit</button>
     </form>
+{%- endmacro %}
+
+{% macro taskForm(action, form=form) %}
+    <form method="POST" action="/{{ action }}" novalidate>
+        {{ form.csrf_token }} <!-- {{ form.hidden_tag() }} -->
+        <div class="ml-2 mr-2" style="justify-content: center;">
+            <div class="form-row">
+                <label class="col-auto" for="inputTaskName"> {{form.taskName.label}} </label>
+                <div class="col-auto"> {{ form.taskName()}} </div>
+            </div>
+            <div class="form-row">
+                <label for="inputDeadline" class="col-auto"> {{form.deadline.label}} </label>
+                <div class="col-auto"> {{ form.deadline() }} </div>
+            </div>
+            <div class="form-row">
+                <label for="inputDescription" class="col-auto"> {{form.description.label}} </label>
+                <div class="col-auto"> {{ form.description() }} </div>
+            </div>
+            
+            {{ form.submit() }}
+        </div>
+    </form>
+{%- endmacro %}
+
+{% macro displayUser(username, user_data) -%}
+    <div class="row">
+        
+        <!-- Display username -->
+        <div class="col-sm">{{username}}</div>
+
+        <!-- User's group -->
+        {% if user_data["group"] == "admin" %}
+        <div class="col-sm">Admin <a class="far fa-arrow-alt-circle-down" href="/changeGroup/{{username}}/normal" style="color: red"></a></div>
+        {% else %}
+        <div class="col-sm">Normal<a class="far fa-arrow-alt-circle-up" href="/changeGroup/{{username}}/admin" style="color: lime"></a></div>
+        {% endif %}
+
+        
+        <!-- User' status (block/unblock) -->
+        <div class="col-sm">
+            {% if user_data["status"] %}
+            Unblocked
+            {% else %}
+            Blocked
+            {% endif %}
+            <!-- Block user -->
+            <a href="/changeStatus/{{username}}/0" class="fas fa-lock"></a>
+            <!-- Unblock user-->
+            <a class="fas fa-lock-open" href="/changeStatus/{{username}}/1"></a>
+        </div>
+    </div>
 {%- endmacro %}
