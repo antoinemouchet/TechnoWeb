@@ -25,6 +25,11 @@ If you have done everything right, you should be ready to launch the app.
 
 Just a few more commands to type in the shell in the same directory as the toDo.py file.
 
+First, you have to activate the conda environment you just created
+```
+conda activate [environmentName]
+```
+
 ### Warning
 This may vary depending on your OS.
 
