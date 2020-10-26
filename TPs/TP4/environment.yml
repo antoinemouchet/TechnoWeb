@@ -1,0 +1,7 @@
+name: TP3
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+prefix: D:\Programmes\miniconda\envs\TP3
+

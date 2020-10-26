@@ -1,0 +1,80 @@
+<!--File for macros-->
+
+{% macro displayTask(task, index, state='false') -%}
+    <div class="row">
+        <!-- task not done -->
+        {% if not task.state %}
+        <div class="col-sm">{{task.name}}</div>
+        <div class="col-sm"><a class="far fa-check-square" href="/changeState/{{task.id}}" style="color: lime"></a></div>
+
+        <!-- task done -->
+        {% else %}
+        <div class="col-sm"><del>{{task.name}}</del></div>
+        <div class="col-sm"><a class="far fa-check-square" href="/changeState/{{task.id}}" style="color: red"></a></div>
+        {% endif %}
+
+        <!-- Description and deadline -->
+        <div class="col-sm">{{task.description}} </div>
+        <div class="col-sm">{{task.deadline.date()}}</div>
+        <!-- delete or edit task -->
+        <div class="col-sm"><a href="/remove/{{task.id}}" class="fas fa-trash"></a> <a class="fas fa-pen" href="/modify/{{task.id}}"></a></div>
+    </div>
+{%- endmacro %}
+
+{% macro form(name, type='text',  text="Enter text", action="") -%}
+    <form action="/{{ action }}" method="POST">
+        <input type="{{ type }}" name="{{ name }}" placeholder="{{text}}" required>
+        <button type="submit">Submit</button>
+    </form>
+{%- endmacro %}
+
+{% macro taskForm(action, form=form) %}
+    <form method="POST" action="/{{ action }}" novalidate>
+        {{ form.csrf_token }} <!-- {{ form.hidden_tag() }} -->
+        <div class="ml-2 mr-2" style="justify-content: center;">
+            <div class="form-row">
+                <label class="col-auto" for="inputTaskName"> {{form.taskName.label}} </label>
+                <div class="col-auto"> {{ form.taskName()}} </div>
+            </div>
+            <div class="form-row">
+                <label for="inputDeadline" class="col-auto"> {{form.deadline.label}} </label>
+                <div class="col-auto"> {{ form.deadline() }} </div>
+            </div>
+            <div class="form-row">
+                <label for="inputDescription" class="col-auto"> {{form.description.label}} </label>
+                <div class="col-auto"> {{ form.description() }} </div>
+            </div>
+            
+            {{ form.submit() }}
+        </div>
+    </form>
+{%- endmacro %}
+
+{% macro displayUser(user) -%}
+    <div class="row">
+        
+        <!-- Display username -->
+        <div class="col-sm">{{user.username}}</div>
+
+        <!-- User's group -->
+        {% if user.group == 1 %}
+        <div class="col-sm">Admin <a class="far fa-arrow-alt-circle-down" href="/changeGroup/{{user.username}}/2" style="color: red"></a></div>
+        {% else %}
+        <div class="col-sm">Normal<a class="far fa-arrow-alt-circle-up" href="/changeGroup/{{user.username}}/1" style="color: lime"></a></div>
+        {% endif %}
+
+        
+        <!-- User' status (block/unblock) -->
+        <div class="col-sm">
+            {% if user.status %}
+            Unblocked
+            {% else %}
+            Blocked
+            {% endif %}
+            <!-- Block user -->
+            <a href="/changeStatus/{{user.username}}/0" class="fas fa-lock"></a>
+            <!-- Unblock user-->
+            <a class="fas fa-lock-open" href="/changeStatus/{{user.username}}/1"></a>
+        </div>
+    </div>
+{%- endmacro %}

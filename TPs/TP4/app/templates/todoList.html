@@ -1,0 +1,32 @@
+{% import 'utils.html' as utils %}
+{% extends "base.html" %}
+
+
+{% block head %}
+    <title>ToDo List</title>
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    {% if length == 0 %}
+        <h3>Nothing to do! Good job.</h3>
+    {% else %}
+        <h3>Total: {{length}} Unfinished: {{notDone}}</h3>
+
+        <!-- Table with tasks -->
+        <div class="container-md">
+            <div class="row">
+                <div class="col-sm"><b>Name</b></div>
+                <div class="col-sm"><b>Status</b></div>
+                <div class="col-sm"><b>Description</b></div>
+                <div class="col-sm"><b>Deadline</b></div>
+                <div class="col-sm"><b>Modification</b></div>
+            </div>
+        {% for n in tasks %}
+            {{ utils.displayTask(n, loop.index)}}
+            <hr>
+        {% endfor %}
+        </div>
+
+    {% endif %}
+{% endblock %}

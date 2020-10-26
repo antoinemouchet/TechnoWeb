@@ -1,0 +1,29 @@
+{% import 'utils.html' as utils %}
+{% extends "base.html" %}
+
+
+{% block head %}
+    <title>Control Pannel</title>
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <h2>Control Pannel</h2>
+    
+    <h3>Number of users: {{length}}</h3>
+
+        <!-- Table with users -->
+        <div class="container-md">
+            <div class="row">
+                <div class="col-sm"><b>Username</b></div>
+                <div class="col-sm"><b>Status</b></div>
+                <div class="col-sm"><b>Group</b></div>
+            </div>
+        {% for n in userList %}
+            {{ utils.displayUser(n)}}
+            <hr>
+        {% endfor %}
+        </div>
+
+
+{% endblock %}
