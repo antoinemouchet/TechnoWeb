@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <ul id="myList">
+            <li>Coffee</li>
+            <li>Tea</li>
+        </ul>
+
+        <!-- Add element -->
+        <button onclick="myFunction()">Try add</button>
+
+        <script> function myFunction() {
+            var node = document.createElement("li");
+            var textnode = document.createTextNode("Water");
+            node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+        } </script>
+
+        <!-- Remove first element -->
+        <button onclick="removeFunction()">Try remove</button>
+
+        <script> function removeFunction() {
+            let list = document.getElementById("myList");
+            let elToDel = list.childNodes[0];
+            list.removeChild(elToDel);
+
+            for (let i = 0; i < list.length; i++) {
+                const element = list[i];
+                print(element);
+                
+            }
+            console.log("success");
+        } </script>
+
+        
+    </body>
+</html>

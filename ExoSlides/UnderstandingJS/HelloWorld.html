@@ -1,0 +1,33 @@
+<html> 
+<head>
+    <meta charset="utf-8"/>
+    <!-- Javascript script can be defined in head -->
+    <script>
+        function myFunction() {
+            document.getElementById("test").innerHTML = "Paragraph Changed";
+        }
+    </script>
+
+    <script src="./Scripts/myScripts.js"></script>
+</head>
+<body>
+    <h1>A Web Page</h1>
+    <!--Defining an identifier for JS (usable by CSS too).-->
+    <p id="demo"></p>
+    <!-- INNER JAVASCRIPT -->
+    <script>
+        // Modifies HTML at place with id demo
+        document.getElementById("demo").innerHTML = "Hello World!";
+    </script>
+
+    <!-- Using JS defined in head -->
+    <p id="test">A paragraph</p>
+
+    <!-- When button is clicked, it calls myFunction. It specifies the event handler-->
+    <button type="button" onclick="myFunction()">Try it</button>
+
+    <p id="text">Some text is written here</p>
+    <button type="button" onclick="changeText()">Try it too</button>
+
+</body>
+</html>
