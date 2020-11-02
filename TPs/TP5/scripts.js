@@ -131,6 +131,9 @@ function updateState(taskID){
  * @param {Number} taskID : index of task in tasks
  */
 function removeTask(taskID){
+    // Cancel any edit happening
+    endEdit();
+    // Remove task
     tasks.splice(taskID, 1);
 
     updateUI();
