@@ -10,7 +10,7 @@ None
 ## **Launch**
 If you have done everything right, you should be ready to launch the app.
 
-Double click on the ````todo.html``` file, it should now be opened in your default internet browser.
+Double click on the ```todo.html``` file, it should now be opened in your default internet browser.
 
 
 ## **How to use ?**
