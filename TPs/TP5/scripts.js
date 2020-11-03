@@ -57,59 +57,78 @@ function displayTasks() {
 function formatTask(task, index){
 
     // Create row
-    let row = document.createElement("div")
-    row.className = "row"
+    let row = document.createElement("div");
+    row.className = "row";
+
+    let col0 = document.createElement("div");
+    col0.className = "col-sm";
+
+    let icon = document.createElement("i");
+    icon.className = (task[1] ? "fas fa-check" : "fas fa-times")
+
+    col0.appendChild(icon);
 
     // Column 1 with name of task
-    let col1 = document.createElement("div")
-    col1.className = "col-sm" + (task[1] ? " strike-through": "")
-    col1.innerText = task[0]
+    let col1 = document.createElement("div");
+    col1.className = "col-sm" + (task[1] ? " strike-through": "");
+    col1.innerText = task[0];
 
     // Column 2 with update state button
-    let col2 = document.createElement("div")
-    col2.className = "col-sm"
+    let col2 = document.createElement("div");
+    col2.className = "col-sm";
 
-    let button = document.createElement("button")
+    let button = document.createElement("button");
     button.type = "button";
-    button.onclick = () => {updateState(index)}
+    button.className = (task[1] ? "btn btn-danger" : "btn btn-success");
+    button.textContent = (task[1] ? " Not done " : " Done ");
+    button.onclick = () => {updateState(index)};
 
-    let a = document.createElement("a")
-    a.className="far fa-check-square"
-    a.style.color = (task[1] ? "lime" : "red")
+    let a = document.createElement("a");
+    a.className= (task[1] ? " far fa-square " : "far fa-check-square");
+    a.style.color = "whitesmoke";
     
-    button.appendChild(a)
-    col2.appendChild(button)
+    button.appendChild(a);
+    col2.appendChild(button);
 
     // Column 3 with modification buttons
-    let col3 = document.createElement("div")
-    col3.className = "col-sm"
+    let col3 = document.createElement("div");
+    col3.className = "col-sm";
+
+    let buttonGroup = document.createElement("div");
+    buttonGroup.className = "btn-group";
+    buttonGroup.role = "group";
 
     // Remove button
-    let button2 = document.createElement("button")
+    let button2 = document.createElement("button");
     button2.type = "button";
-    button2.onclick = () => {removeTask(index)}
+    button2.className = "btn btn-danger";
+    button2.onclick = () => {removeTask(index)};
 
-    let a2 = document.createElement("a")
-    a2.className="fas fa-trash"
+    let a2 = document.createElement("a");
+    a2.className="fas fa-trash";
     
-    button2.appendChild(a2)
+    button2.appendChild(a2);
 
     // Edit button
-    let button3 = document.createElement("button")
+    let button3 = document.createElement("button");
     button3.type = "button";
-    button3.onclick = () => {displayTaskForm("javascript:modifyTask(" + index +")", task[0])}
+    button3.className = "btn btn-secondary";
+    button3.onclick = () => {displayTaskForm("javascript:modifyTask(" + index +")", task[0])};
 
-    let a3 = document.createElement("a")
-    a3.className="fas fa-pen"
-    button3.appendChild(a3)
+    let a3 = document.createElement("a");
+    a3.className="fas fa-pen";
+    button3.appendChild(a3);
 
-    col3.appendChild(button2)
-    col3.appendChild(button3)
+    buttonGroup.appendChild(button3);
+    buttonGroup.appendChild(button2);
 
+    col3.appendChild(buttonGroup);
+    
     // Apend columns to row
-    row.appendChild(col1)
-    row.appendChild(col2)
-    row.appendChild(col3)
+    row.appendChild(col0);
+    row.appendChild(col1);
+    row.appendChild(col2);
+    row.appendChild(col3);
 
     return row
 

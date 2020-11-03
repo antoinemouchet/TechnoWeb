@@ -4,7 +4,7 @@ h1{
 
 .container {
     width: 100%;
-    max-width: 75vw;
+    max-width: 85vw;
     margin: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -15,15 +15,19 @@ h1{
     text-align: center;
 }
 
-.container-md {
+.ctmd-style {
     border: 0.1px solid lightgray;
     border-radius: 5px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
+.fa-trash, .fa-pen {
+    color: whitesmoke;
+}
+
 .fa-trash:hover, .fa-pen:hover{
-    color: darkblue;
+    color: whitesmoke;
     text-decoration: none;
 }
 
@@ -40,3 +44,13 @@ form {
 .strike-through {
     text-decoration: line-through;
 }
+
+
+.fa-check {
+    color:#28a745;
+}
+
+.fa-times {
+    color: #dc3545;
+}
+
