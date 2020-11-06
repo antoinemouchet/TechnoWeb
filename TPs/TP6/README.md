@@ -28,7 +28,7 @@ Double click on the ```todo.html``` file, it should now be opened in your defaul
 * Press ```Submit``` to change the name with the value you just entered or press ```Cancel``` to discard changes.
 
 ### _Mark a task as done or not done_
-* Press the box containing ````Done``` or ```Not done``` next to the corresponding task. The status the task will take is written.
+* Press the box containing ```Done``` or ```Not done``` next to the corresponding task. The status the task will take is written.
 
 ### _Filter_
 * Press the filter dropdown menu.
