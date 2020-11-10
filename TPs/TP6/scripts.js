@@ -1,10 +1,12 @@
 class Task {
+    id;
     name;
     status;
 
-    constructor(name, status) {
+    constructor(name, status, id) {
         this.name = name;
         this.status = false;
+        this.id = id
     }
 
 }
@@ -20,7 +22,17 @@ function updateUI(){
     updateSubtitle();
     displayFilter();
     displayTasks();
+    updateTaskID();
     cursorFocusTask();
+}
+
+/**
+ * Function to update the id of each task
+ */
+function updateTaskID() {
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].id = i;
+    }
 }
 
 
@@ -28,10 +40,9 @@ function updateUI(){
  * Update inner HTML describing number of tasks to do depending on the presence of tasks.
  */
 function updateSubtitle() {
-    let doc = document.getElementById("sub");
     
     if (tasks.length == 0){
-        doc.innerText = "Nothing to do! Good job";
+       $("#sub").text("Nothing to do! Good job");
     }
     else {
         let notDone = 0;
@@ -40,7 +51,7 @@ function updateSubtitle() {
                 notDone++;
             }
         }
-        doc.innerText = "Total: " + tasks.length + " - Unfinished: " + notDone
+        $("#sub").text("Total: " + tasks.length + " - Unfinished: " + notDone)
     }
 }
 
@@ -49,19 +60,18 @@ function updateSubtitle() {
  */
 function displayTasks() {
 
-    let stringTable = document.getElementById("tasks");
-
     // Get filter
-    let filterName = document.getElementById("filter-name").innerText;
+    let filterName = $("#filter-name").text();
 
     // Reset table
-    stringTable.innerHTML = ""
+    $("#tasks").empty();
 
     // Loop on all tasks and add each one of them to the string representing the html
     for (let i = 0; i < tasks.length; i++) {
         if (checkFilter(tasks[i], filterName)) {
-            stringTable.appendChild(formatTask(tasks[i], i));
-            stringTable.appendChild(document.createElement("hr"));
+            $("#tasks").append(formatTask(tasks[i], i))
+            $("#tasks").append($("<hr>"))
+
         }
     }
 
@@ -98,7 +108,10 @@ function formatTask(task, index){
 
     // Create row
     let row = document.createElement("div");
-    row.className = "row";
+    row.className = "row movable";
+    row.draggable = true;
+    // index of task in tasks
+    row.id = index;
 
     // Column 0 with state of task
     let col0 = document.createElement("div");
@@ -171,6 +184,16 @@ function formatTask(task, index){
     row.appendChild(col2);
     row.appendChild(col3);
 
+    
+    // Event listeners
+    row.addEventListener('dragstart', dragStart, false);
+    row.addEventListener('dragover', dragOver, false);
+    row.addEventListener('dragenter', dragEnter, false);
+    row.addEventListener('dragleave', dragLeave, false);
+    row.addEventListener('dragend', dragEnd, false);
+    row.addEventListener('drop', drop, false);
+    
+
     return row
 
 }
@@ -207,16 +230,16 @@ function addTask() {
     let newTask;
     
     // Get task name from form
-    taskName = document.getElementById("task-input").value;
+    taskName = $("#task-input").val()
 
     // Add caracteristics to newTask
-    newTask = new Task(taskName, false);
+    newTask = new Task(taskName, false, tasks.length);
 
     // Add task to list of tasks
     tasks.push(newTask);
 
     // Reset value of field
-    document.getElementById("task-input").value = "";
+    $("#task-input").val("")
     updateUI();
 
 }
@@ -242,7 +265,7 @@ function displayTaskForm(action="javascript:addTask()", taskName="") {
     formInput.id = "task-input";
     formInput.type = "text";
     formInput.placeholder = "Enter task name";
-    value = taskName;
+    formInput.value = taskName;
 
     let formSubmit = document.createElement("input");
     formSubmit.id = "submit";
@@ -284,14 +307,16 @@ function cursorFocusTask(field="task-input") {
 
 function validateTask(field="task-input") {
     // Get value from form
-    let taskName = document.getElementById(field).value;
+    let taskName = $("#" + field).val();
 
     // Check not only whitespace
     if (taskName.trim() == ""){
         window.alert("Task can not be empty or whitespaces only");
-        document.getElementById(field).value = "";
+        // Reset value of field
+        $("#" + field).val("");
         return false;
     }
+    cursorFocusTask();
 
     return true;
 }
@@ -303,9 +328,9 @@ function validateTask(field="task-input") {
 function modifyTask(taskID) {
 
     // Change name of task
-    tasks[taskID].name = document.getElementById("task-input").value;
+    tasks[taskID].name = $("#task-input").val();
 
-   endEdit();
+    endEdit();
 
 }
 
@@ -323,16 +348,12 @@ function endEdit(){
  */
 function displayFilter() {
 
-    let filterStr = document.getElementById("filter-selected");
-
     // Save name of pre-existing filter 
-    let filterName = document.getElementById("filter-name").textContent;
+    let filterName = $("#filter-name").text();
     //console.log(filterName)
 
     // Display filter only if one is selected
-    filterStr.textContent = filterName == "" ? "": ("Filter: " + filterName);
-
-
+    $("#filter-selected").text( filterName =="" ? "": ("Filter: " + filterName))
 }
 
 
@@ -341,8 +362,8 @@ function displayFilter() {
  * @param {String} filter name of the filter to display
  */
 function setFilter(filter="") {
-    let filterName = document.getElementById("filter-name");
-    filterName.textContent = filter;
+
+    $("#filter-name").text(filter);
 
     updateUI();
 }
@@ -353,22 +374,22 @@ function setFilter(filter="") {
  * @param {String} order name of the order to display
  */
 function setOrder(order="") {
-    let orderName = document.getElementById("sort-type");
-    orderName.textContent = order;
+    
+    $("#sort-type").text(order);
 
     sortTasks();
 }
 
 function sortTasks() {
-    let sortType = document.getElementById("sort-type").innerText;
+    let sortType = $("#sort-type").text();
 
     // If type of sorting is not nothing then it is either alphabetically increasing or decreasing
     if (sortType != "") {
-        tasks.sort(compareStrings)
+        tasks.sort(compareStrings);
     }
 
     if (sortType == "Decreasing order"){
-        tasks.reverse()
+        tasks.reverse();
     }
 
     updateUI();
@@ -382,4 +403,62 @@ function sortTasks() {
  */
 function compareStrings(task1, task2) {
     return (task1.name.toUpperCase()).localeCompare(task2.name.toUpperCase());
+}
+
+// Functions to manage the drag and drop
+
+// Moving element inside array
+function move(oldID, newID) {
+    tasks.splice(newID, 0, tasks.splice(oldID, 1)[0]);
+};
+
+// Dragging the row
+function dragStart(e) {
+
+    // Change the opacity
+    $(this).css("opacity", "0.3");
+
+    // Save element id
+    baseID = this.id;
+
+}
+
+// Restore element
+function dragEnd(e) {
+    $(this).css("opacity", "1");
+}
+
+function dragOver(e) {
+    if (e.preventDefault) {
+        e.preventDefault();
+    }
+
+    return false;
+}
+
+// Add a class when passing above a droppable place with a dragged object
+function dragEnter(e) {
+    $(this).addClass("over");
+}
+
+// Removing the class added by dragEnter when leaving 
+function dragLeave(e) {
+    $(this).removeClass("over");
+}
+
+// Function for the drop (swap content emplacements)
+function drop(e) {
+
+    // Stop the propagation of the event
+    e.stopPropagation();
+
+    // Check that base element is not the same as the one on which we drop
+    if (baseID !== this.id) {
+        tasks.splice(this.id, 0, tasks.splice(baseID, 1)[0]);
+
+        //console.log(this.id)
+        //console.log("base: "+ baseID)
+    }
+  
+   updateUI();
 }
