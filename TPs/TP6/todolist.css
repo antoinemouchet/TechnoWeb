@@ -54,3 +54,10 @@ form {
     color: #dc3545;
 }
 
+.movable {
+    cursor: move;
+}
+
+.movable.over {
+    background-color: lightgray;
+}
