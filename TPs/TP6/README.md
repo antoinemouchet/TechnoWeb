@@ -38,6 +38,9 @@ Double click on the ```todo.html``` file, it should now be opened in your defaul
 * Press the sort dropdown menu.
 * Select the sorting you want to apply.
 
+### _Move a task_
+* Click on the task you wish to move
+* Drag and drop it on its new emplacement
 
 ## **Notes**
 If a task is done, its name is crossed.
