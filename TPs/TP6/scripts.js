@@ -392,7 +392,7 @@ function sortTasks() {
         tasks.reverse();
     }
 
-    updateUI();
+    endEdit();
     
 }
 
@@ -459,6 +459,6 @@ function drop(e) {
         //console.log(this.id)
         //console.log("base: "+ baseID)
     }
-  
-   updateUI();
+    
+    endEdit();
 }
